@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>School Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: #123c69;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns:
+            repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #ddd;
+        }
+
+        h2 {
+            color: #123c69;
+        }
+
+        input {
+            padding: 12px;
+            width: 90%;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #123c69;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        li {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>School Management System</h1>
+        <p>Welcome to our school dashboard</p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Students</h2>
+            <h1 id="total">0</h1>
+        </div>
+
+        <div class="card">
+            <h2>School</h2>
+            <p>Management Dashboard</p>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <h2>Add New Student</h2>
+
+        <input type="text"
+               id="studentName"
+               placeholder="Enter student name">
+
+        <button onclick="addStudent()">
+            Add Student
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Student List</h2>
+        <ul id="studentList"></ul>
+    </div>
+
+    <script>
+        let count = 0;
+
+        function addStudent() {
+
+            let name =
+            document.getElementById("studentName").value;
+
+            if (name.trim() === "") {
+                alert("Please enter student name");
+                return;
+            }
+
+            let student =
+            document.createElement("li");
+
+            student.textContent = name;
+
+            document.getElementById("studentList")
+            .appendChild(student);
+
+            count++;
+
+            document.getElementById("total")
+            .textContent = count;
+
+            document.getElementById("studentName")
+            .value = "";
+        }
+    </script>
+
+</body>
+</html>
